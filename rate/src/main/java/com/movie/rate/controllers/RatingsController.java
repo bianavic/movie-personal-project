@@ -12,19 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ratingsdata")
 public class RatingsController {
 
-  @RequestMapping("/{movieId}")
-  public Rating getRating(@PathVariable("movieId") String movieId) {
+  @RequestMapping("/movies/{movieId}")
+  public Rating getMovieRating(@PathVariable("movieId") String movieId) {
     return new Rating(movieId, 4);
   }
 
-  @RequestMapping("users/{userId}")
-  public UserRating getUserRating(@PathVariable("userId") String userId) {
-    List<Rating> ratings = Arrays.asList(
-        new Rating("1234", 4),
-        new Rating("5678", 3)
-    );
+  @RequestMapping("/users/{userId}")
+  public UserRating getUserRatings(@PathVariable("userId") String userId) {
     UserRating userRating = new UserRating();
-    userRating.setUserRating(ratings);
+    userRating.initData(userId);
     return userRating;
   }
 

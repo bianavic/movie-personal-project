@@ -7,11 +7,11 @@ public class CatalogItem {
 
   private String movieTitle;
   private String description;
-  private int rate;
+  private int rating;
 
-  public CatalogItem(String movieTitle, String description, int rate) {
+  public CatalogItem(String movieTitle, String description, int rating) {
     this.movieTitle = movieTitle;
     this.description = description;
-    this.rate = rate;
+    this.rating = rating;
   }
 }

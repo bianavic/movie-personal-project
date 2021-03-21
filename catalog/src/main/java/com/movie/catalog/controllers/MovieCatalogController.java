@@ -2,14 +2,11 @@ package com.movie.catalog.controllers;
 
 import com.movie.catalog.models.CatalogItem;
 import com.movie.catalog.models.Movie;
-import com.movie.catalog.models.Rating;
 import com.movie.catalog.models.UserRating;
-import java.lang.reflect.ParameterizedType;
-import java.util.Arrays;
+import com.netflix.discovery.DiscoveryClient;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.reactive.function.client.WebClientCustomizer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,26 +30,14 @@ public class MovieCatalogController {
     UserRating ratings = restTemplate.getForObject("http://movie-ratings-service/ratingsdata/users/" + userId,
         UserRating.class);
 
-    return ratings.getUserRating().stream().map(rating -> {
+    return ratings.getRatings().stream().map(rating -> {
       // for each movie ID call movie info services and get movies information back
       Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
       // Put them all together
-      return new CatalogItem(movie.getMovieTitle(), "About True Detective Movie",
+      return new CatalogItem(movie.getMovieTitle(), movie.getDescription(),
           rating.getRating());
     })
         .collect(Collectors.toList());
   }
 
 }
-
-
-/**
-
- Movie movie = webClientBuilder.build()
- .get()
- .uri("http://localhost:8082/movies/" + rating.getMovieId())
- .retrieve()
- .bodyToMono(Movie.class)
- .block();
- *
- */
