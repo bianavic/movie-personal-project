@@ -11,7 +11,7 @@ public class MovieInfoController {
 
   @RequestMapping("/{movieId}")
   public Movie getMovieInfo(@PathVariable("movieId") String movieId) {
-    return new Movie(movieId, "True Detective Season 3");
+    return new Movie(movieId, "Nome for ID " + movieId);
   }
 
 }

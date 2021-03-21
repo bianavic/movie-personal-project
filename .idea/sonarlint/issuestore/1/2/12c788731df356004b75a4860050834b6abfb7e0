@@ -1,0 +1,11 @@
+
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8ê¢¬‘…/
+ƒ
+java:S1128"fRemove this unused import 'org.springframework.boot.web.reactive.function.client.WebClientCustomizer'.(ã¿úĞ8‹Ç’…/
+b
+java:S2259$"EA "NullPointerException" could be thrown; "ratings" is nullable here.(ØÌü8ê¢¬‘…/
+b
+java:S1128"@Remove this unused import 'java.lang.reflect.ParameterizedType'.(ÎÏ˜™ÿÿÿÿÿ8ê¢¬‘…/
+Y
+java:S1128"<Remove this unused import 'com.movie.catalog.models.Rating'.(•´¬¸8š­‘…/
